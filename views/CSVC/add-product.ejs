@@ -1,0 +1,27 @@
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <a href="/"><h3>Home page</h3></a>
+    <h2>ADD PRODUCT</h2>
+    <form action="/api/user/employee/csvc" method="POST">
+        <div class="form-group">
+            <label>Tên</label>
+            <input class="form-control" type="text" name='productName' required>
+        </div>
+        <div class="form-group">
+            <label>Tình trạng</label>
+            <input class="form-control" type="text" name='productType' required>
+        </div>
+        <div class="form-group">
+            <label>Ghi chú</label>
+            <input class="form-control" type="text" name="productDetails" required>
+        </div>
+        <input id="add-btn" class="btn btn-primary" type="submit" value="ADD PRODUCT">
+        <button><a href="/api/user/employee/csvc">Cancel</a></button>
+    </form>
+</div>
+</body>

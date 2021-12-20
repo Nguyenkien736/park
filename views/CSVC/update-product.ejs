@@ -1,0 +1,48 @@
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/">
+            <h3>Home page</h3>
+        </a>
+        <h2>Cập nhật trò chơi</h2>
+        <form action="/api/user/employee/csvc/<%= product._id %>" method="POST">
+            <div class="form-group">
+                <label>Product ID</label>
+                <input class="form-control" type="text" name='productId' value="<%= product._id %>" disabled>
+            </div>
+            <div class="form-group">
+                <label>Tên</label>
+                <input class="form-control" type="text" name='productName' value="<%= product.name %>" required>
+            </div>
+            <div class="form-group">
+                <label>Tình trạng</label>
+                <input class="form-control" type="text" name='productType' value="<%= product.type %>" required>
+            </div>
+            <div class="form-group">
+                <label>Ghi chú</label>
+                <input class="form-control" type="text" name='productDetails' value="<%= product.details %>"
+                    maxlength="150" required>
+            </div>
+            <input id="update-btn" class="btn btn-primary" type="submit" value="SAVE">
+            <input id="update-btn" class="btn btn-secondary" type="button" value="DELETE"
+            onclick="handleDeleteProduct('<%= product._id %>')">
+            <button><a href="/api/user/employee/csvc">Cancel</a></button>
+            <script>
+                function handleDeleteProduct(value) {
+                    $.ajax({
+                        url: '/api/user/employee/csvc/' + value,
+                        type: 'DELETE',
+                        success: function (result) {
+                            $(location).attr('href', '/api/user/employee/csvc');
+                        }
+                    })
+                }
+            </script>
+        </form>
+
+</body>

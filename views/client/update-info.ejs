@@ -1,0 +1,34 @@
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/">
+            <h3>Home page</h3>
+        </a>
+        <h2>UPDATE PRODUCT</h2>
+        <form action="/api/user/client/infomod/<%= client._id %>" method="POST">
+            <div class="form-group">
+                <label>Product ID</label>
+                <input class="form-control" type="text" name='clientId' value="<%= client._id %>" disabled>
+            </div>
+            <div class="form-group">
+                <label>Tên</label>
+                <input class="form-control" type="text" name='name' value="<%= client.name %>" >
+            </div>
+            <div class="form-group">
+                <label>SDT</label>
+                <input class="form-control" type="number" name='phonenumber' value="<%= client.phonenumber %>" >
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" name='email' value="<%= client.email %>" maxlength="150" required>
+            </div>
+            <input id="update-btn" class="btn btn-primary" type="submit" value="SAVE">
+            <button><a href="/api/user/client/info/<%= client._id %>">Cancel</a></button>
+        </form>
+    </div>
+</body>

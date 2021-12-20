@@ -1,0 +1,28 @@
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <a href="/"><h3>Home page</h3></a>
+    <h2>ADD PRODUCT</h2>
+    <form action="./" method="POST">
+        <div class="form-group">
+            <label>Tên trò chơi</label>
+            <input class="form-control" type="text" name='productName' required>
+        </div>
+        <div class="form-group">
+            <label>Giá vé</label>
+            <input class="form-control" type="number" name='productType'>
+        </div>
+        <!-- <div class="form-group">
+            <label>Mô tả chi tiết</label>
+            <input class="form-control" type="text" name="productDetails">
+        </div> -->
+        <input id="add-btn" class="btn btn-primary" type="submit" value="ADD PRODUCT">
+        <button><a href="./GamePrice">Cancel</a></button>
+
+    </form>
+</div>
+</body>

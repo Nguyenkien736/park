@@ -1,0 +1,77 @@
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="/css/general.css">
+        <link rel="stylesheet" href="/css/table.css">
+        <link rel="stylesheet" href="/css/gameinfo.css">
+        <link rel="stylesheet" href="/css/info.css"
+         <meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline'">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <title>Thông tin ca nhan</title>  
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="side-bar">
+                <h3>Chức năng</h3>
+                <ul>
+                    <li><a href="/api/user/client/muave/<%= client._id %>"><button>Mua ve</button></a></li>
+                    <li><a href="/api/user/client/dangkyvip/<%= client._id %>"><button>Dang ky VIP</button></a></li>
+                    <li><a href="/api/user/client/info/<%= client._id %>"><button>Thong Tin</button></a></li>
+                    <li><a href="/api/user/client/tiketstatus/<%= client._id %>"><button>Tinh Trang Ve</button></a></li>
+                </ul>
+            </div>
+            <div id="main-content">
+                <div class="main-content-top">
+                    <h3>Thong tin ca nhan</h3>
+                   
+                    <button>
+                        Đăng xuất
+                    </button>
+                </div>
+                <div>
+                <label class="lab">
+                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= client.name%>"/>
+                </label>
+                <hr>
+                    
+                  
+                <label class="lab">
+                    Thoi han ve con<input class="inp" type="text" name="dummy2" readonly="true" value="<%= (client.ticketexpired- new Date())>0 ? client.ticketexpired- new Date() : 0%>" />
+                    
+                </label>
+                <hr>
+                    
+                
+                  
+                <label class="lab">
+                    Thoi han vip con <input class="inp" type="text" name="dummy3" readonly="true" value=""/>
+                </label>
+                <hr>
+                    
+                
+                <hr>
+                    
+            </div>
+            
+                  
+                <script>
+                    function handleUpdateProduct(value) {
+                        console.log(value);
+                        console.log("hello")
+                        $(location).attr('href', '/api/user/employee/GamePrice/update-product/' + value);
+                    }
+                </script>
+                
+            </div>
+    
+    
+    
+    </body>
+    
+    </html>

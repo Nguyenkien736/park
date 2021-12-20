@@ -1,0 +1,20 @@
+.lab {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: left;
+    width: 60%;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+  
+.inp {
+    
+    box-shadow:transparent;
+    border: 0ch;
+   
+    border-color: aquamarine;
+
+    flex: 0 0 80%;
+    margin-left: auto;
+}

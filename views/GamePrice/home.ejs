@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline'">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/gameinfo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>Thông tin trò chơi</title>  
+</head>
+
+<body>
+    <div id="container">
+        <div id="side-bar">
+            <h3>Chức năng</h3>
+            <ul>
+                <li><a href="/api/user/employee/thongke"><button>Thống kê người chơi</button></a></li>
+                <li><a href="/api/user/employee/GameInformation"><button>Thông tin trò chơi</button></a></li>
+                <li><a href="/api/user/employee/csvc"><button>Cơ sở vật chất</button></a></li>
+                <li><a href="/api/user/employee/GamePrice"><button>Quản lý trò chơi</button></a></li>
+            </ul>
+        </div>
+        <div id="main-content">
+            <div class="main-content-top">
+                <h3>Quản lý trò chơi</h3>
+                <button><a href="/api/user/employee/add-product">Thêm trò chơi</a></button>
+                <button>
+                    Đăng xuất
+                </button>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product id</th>
+                        <th>Tên trò chơi</th>
+                        <th>Giá vé</th>
+                        <!-- <th>Mô tả</th> -->
+                    </tr>
+                </thead>
+                <% products.forEach((entry)=> { %>
+                    <tr ondblclick="handleUpdateProduct('<%= entry._id %>')">
+                        <td>
+                            <%= entry._id %>
+                        </td>
+                        <td>
+                            <%= entry.name %>
+                        </td>
+                        <td>
+                            <%= entry.type %>
+                        </td>
+                        <!-- <td>
+                            <%=entry.details %>
+                        </td> -->
+                        <td>
+                            <input class="btn btn-primary" type="button" value="Update"
+                                onclick="handleUpdateProduct('<%= entry._id %>')">
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <script>
+                function handleUpdateProduct(value) {
+                    console.log(value);
+                    console.log("hello")
+                    $(location).attr('href', '/api/user/employee/GamePrice/update-product/' + value);
+                }
+            </script>
+            
+        </div>
+
+
+
+</body>
+
+</html>

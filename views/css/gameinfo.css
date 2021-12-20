@@ -1,0 +1,22 @@
+table {
+    width: 70%
+}
+
+.box {
+    margin-left: 1%;
+    width: 29%;
+    margin-bottom: 50px;
+    border: 1px solid #EDD2F3;
+    border-radius: 10px;
+    background: white;
+    overflow: hidden;
+}
+
+.box>div {
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+    background: #f9fafc;
+}
