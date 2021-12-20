@@ -19,5 +19,23 @@ router.use('/client',clientRoute)
 router.use('/employee',employeeRoute)
 router.use('/admin',adminRoute)
 
+router.get('/changepassword/:userID',(req,res)=>{
+    User.findById(req.params.userID,(err,user)=>{
+        res.render('password/changepassword',{client: user})
+
+    })
+    
+} )
+router.post('/changepassword/:userID',(req,res)=>{
+    User.findById(req.params.userID,(err,user)=>{
+        
+        user.password=req.body.newpassword
+        user.save()
+        res.redirect('/')
+
+    })
+    
+} )
+
 
 module.exports= router
