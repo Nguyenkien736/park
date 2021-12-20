@@ -16,6 +16,12 @@
     </head>
     
     <body>
+        <script>
+            function handlelogout()
+            {
+                localStorage.setItem("role","")
+            }
+        </script>
         <div id="container">
             <div id="side-bar">
                 <h3>Chức năng</h3>
@@ -30,19 +36,19 @@
                 <div class="main-content-top">
                     <h3>Thong tin ca nhan</h3>
                    
-                    <button>
-                        Đăng xuất
+                    <button onclick="handlelogout()">
+                        <a href="/">Đăng xuất</a>
                     </button>
                 </div>
                 <div>
                 <label class="lab">
-                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= client.name%>"/>
+                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= client._id %>"/>
                 </label>
                 <hr>
                     
                   
                 <label class="lab">
-                    Thoi han ve con<input class="inp" type="text" name="dummy2" readonly="true" value="<%= (client.ticketexpired- new Date())>0 ? client.ticketexpired- new Date() : 0%>" />
+                    Thoi han ve con<input class="inp" type="text" name="dummy2" readonly="true" value="<%= client.ticketactivated.getDate()-new Date().getDate()  %>" />
                     
                 </label>
                 <hr>

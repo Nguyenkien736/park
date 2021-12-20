@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <script>
+        function handlelogout()
+        {
+            localStorage.setItem("role","")
+        }
+    </script>
     <div id="container">
         <div id="side-bar">
             <h3>Chức năng</h3>
@@ -27,8 +33,10 @@
             <div class="main-content-top">
                 <h3>Cơ sở vật chất</h3>
                 <button><a href="/api/user/employee/csvc/add-product">Thêm</a></button>
-                <button>
-                    Đăng xuất
+                <button onclick="handlelogout()">
+                    <a href="/">Đăng xuất</a>
+
+                   
                 </button>
             </div>
             <table class="table table-hover">
@@ -49,10 +57,16 @@
                             <%= entry.name %>
                         </td>
                         <td>
-                            <%= entry.type %>
+                            <%= entry.status %>
+
+                            <form style="float: inline-end;" action="/api/user/employee/change_status/<%= entry._id%>" method="post">
+                                <input type="submit" value="Change status">
+
+                            </form>
+                            
                         </td>
                         <td>
-                            <%=entry.details %>
+                            <%=entry.note %>
                         </td>
                         <td>
                             <input class="btn btn-primary" type="button" value="Update"

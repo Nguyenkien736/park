@@ -79,6 +79,10 @@ router.get('/ticket_status',(req,res)=>{
 
 
 router.get("/dangkyvip/:userID",(req,res)=>{
+  User.findById(req.params.userID,(err,client)=>{
+    if(err) console.log(err);
+    else res.render('client/dangkyvip',{client:client})
+  })
   
 
 })
@@ -88,6 +92,8 @@ router.get("/info/:userID",(req,res)=>{
       console.log(err);
       throw err
   }
+  
+
   
   res.render('client/info', { client: client });
 

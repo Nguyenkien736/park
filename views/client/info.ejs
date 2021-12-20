@@ -16,7 +16,15 @@
 </head>
 
 <body>
+    <script>
+        function handlelogout()
+        {
+            localStorage.setItem("role","")
+        }
+    </script>
+    <% localStorage.setItem("role", "Client") %>
     <div id="container">
+
         <div id="side-bar">
             <h3>Chức năng</h3>
             <ul>
@@ -30,8 +38,8 @@
             <div class="main-content-top">
                 <h3>Thong tin ca nhan</h3>
                
-                <button>
-                    Đăng xuất
+                <button onclick="handlelogout()"> 
+                    <a href="/">Đăng xuất</a>
                 </button>
             </div>
             <div>

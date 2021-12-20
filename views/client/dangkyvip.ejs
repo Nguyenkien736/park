@@ -16,33 +16,39 @@
     </head>
     
     <body>
+        <script>
+            function handlelogout()
+            {
+                localStorage.setItem("role","")
+            }
+        </script>
         <div id="container">
             <div id="side-bar">
                 <h3>Chức năng</h3>
                 <ul>
-                    <li><a href="/api/user/client/muave"><button>Mua ve</button></a></li>
-                    <li><a href="/api/user/client/dangkyvip"><button>Dang ky VIP</button></a></li>
-                    <li><a href="/api/user/client/info"><button>Thong Tin</button></a></li>
-                    <li><a href="/api/user/client/tiketstatus"><button>Tinh Trang Ve</button></a></li>
+                    <li><a href="/api/user/client/muave/<%= client._id%>"><button>Mua ve</button></a></li>
+                    <li><a href="/api/user/client/dangkyvip/<%= client._id%>"><button>Dang ky VIP</button></a></li>
+                    <li><a href="/api/user/client/info/<%= client._id%>"><button>Thong Tin</button></a></li>
+                    <li><a href="/api/user/client/tiketstatus/<%= client._id%>"><button>Tinh Trang Ve</button></a></li>
                 </ul>
             </div>
             <div id="main-content">
                 <div class="main-content-top">
                     <h3>Thong tin ca nhan</h3>
                    
-                    <button>
-                        Đăng xuất
+                    <button onclick="handlelogout()">
+                        <a href="/">Đăng xuất</a>
                     </button>
                 </div>
                 <div>
                 <label class="lab">
-                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= client.name%>"/>
+                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= client._id%>"/>
                 </label>
                 <hr>
                     
                   
                 <label class="lab">
-                    Name <input class="inp" type="text" name="dummy2" readonly="true" value="<%= client.name%>" />
+                    STK <input class="inp" type="text" name="dummy2" readonly="true" value="##########" />
                     
                 </label>
                 <hr>
@@ -50,42 +56,18 @@
                 
                   
                 <label class="lab">
-                    Date of birth <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
+                    So tien <input class="inp" type="text" name="dummy3" readonly="true" value="#####"/>
                 </label>
                 <hr>
                     
-                <label class="lab">
-                    Email <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Phone number <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Facebook <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Address <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    VIP <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
+                
+                
                     
             </div>
-            <button><a href="/api/user/client/update-account/"+'<%= client._id %>'>
-                Update
-            </a></button>
+            
             <button>
-                <a href="/api/user/client/changepassword/<%= client._id %>"">
-                    Update
+                <a href="/api/user/client/info/<%= client._id %>"">
+                    Go back
                 </a></button>
             <hr>
             

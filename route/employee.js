@@ -19,6 +19,7 @@ var express = require('express');
 const Product = require('./modules/game');            //game
 var Csvc = require('./modules/game');
 const csvc = require('./modules/game');
+const User=require('./modules/User')
 
 // Loading GameInformation
 router.get('/GameInformation', (req, res) => {
@@ -59,6 +60,7 @@ router.get('/GameInformation/update-product/:productId', (req, res) => {
         res.render('GameInformation/update-product', { product: product });
     })
 });
+
 
 // Update product with GameInformation
 router.post('/GameInformation/:productId', (req, res) => {
@@ -108,7 +110,19 @@ router.delete('/:productId', (req, res) => {
 router.get('/add-product', (req, res) => {
     res.render('GamePrice/add-product');
 });
+router.post("/updateClientTicket",(req,res)=>{
+    User.findById(req.body.clientID,(err,client)=>{
+        if(err) console.log(err)
+        client.ticketexpired=req.body.ticketexpired
+        client.ticketactivated=req.body.ticketactivated
+        client.save()
+    })
+    res.redirect('/api/user/employee/search_user')
 
+
+
+
+})
 // Add new product
 router.post('/',  (req, res) => {
     console.log(req.body.productName)
@@ -153,17 +167,41 @@ router.get('/csvc/update-product/:productId', (req, res) => {
     })
 });
 
+router.post('/change_status/:product_id',(req,res)=>{
+    Product.findById(req.params.product_id,(err,product)=>{
+        const status = product.status
+        product.status=!status
+        product.save()
+        res.redirect('/api/user/employee/csvc')
+    })
+})
+
 router.post('/csvc/:productId', (req, res) => {
     let productId = req.params.productId;
     Csvc.findByIdAndUpdate(
         { _id: productId },
-        { $set: { name: req.body.productName, type: req.body.productType, details: req.body.productDetails } },
+        { $set: { name: req.body.productName, type: req.body.productType, note: req.body.productDetails } },
         { useFindAndModify: false })
         .then(doc => {
             res.redirect('/api/user/employee/csvc')
         })
 });
 
+router.post("/search_user",(req,res)=>{
+    User.findOne({username:req.body.username},(err,client)=>{
+        if(err) console.log(err);
+        else {
+            res.render('findingClient/searchClient',{client:client})
+        }
+
+
+    })
+
+})
+
+router.get("/search_user",(req,res)=>{
+    res.render('findingClient/searchClient',{client: false})    
+})
 
 
 // Go to add product
@@ -175,7 +213,7 @@ router.post('/csvc', (req, res) => {
     let newProduct = new Csvc({
         name: req.body.productName,
         type: req.body.productType,
-        details: req.body.productDetails,
+        note: req.body.productDetails,
     });
 
     newProduct.save()

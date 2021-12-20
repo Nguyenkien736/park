@@ -30,58 +30,27 @@
                 <div class="main-content-top">
                     <h3>Thong tin ca nhan</h3>
                    
-                    <button>
-                        Đăng xuất
+                    <button onclick="handlelogout()">
+                        <a href="/">Đăng xuất</a>
                     </button>
                 </div>
                 <div>
                 <label class="lab">
-                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= client.name%>"/>
+                    Chuyen tien den so tai khoan <input class="inp" type="text" name="dummy1" readonly="true" value="##########"/>
                 </label>
                 <hr>
                     
                   
                 <label class="lab">
-                    Name <input class="inp" type="text" name="dummy2" readonly="true" value="<%= client.name%>" />
+                    So tien can chuyen <input class="inp" type="text" name="dummy2" readonly="true" value="#####" />
                     
                 </label>
                 <hr>
                     
-                
-                  
-                <label class="lab">
-                    Date of birth <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Email <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Phone number <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Facebook <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    Address <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
-                    
-                <label class="lab">
-                    VIP <input class="inp" type="text" name="dummy3" readonly="true" value="<%= client.name%>"/>
-                </label>
-                <hr>
                     
             </div>
-            <button><a href="/api/user/client/muave/<%= client._id %>">
-                buy ticket
+            <button><a href="/api/user/client/info/<%= client._id %>">
+                go back
             </a></button>
             
             <hr>

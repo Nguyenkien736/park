@@ -10,8 +10,8 @@ const gameSchema = new mongoose.Schema(
         },
         
         status: { 
-            type: String,
-            default:""
+            type: Boolean,
+            default: true
         },
         note:{
             type: String,

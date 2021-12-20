@@ -13,12 +13,6 @@
 </head>
 
 <body>
-    <script>
-        function handlelogout()
-        {
-            localStorage.setItem("role","")
-        }
-    </script>
     <div id="container">
         <div id="side-bar">
             <h3>Chức năng</h3>
@@ -32,39 +26,25 @@
         <div id="main-content">
             <div class="main-content-top">
                 <h3>Thông tin trò chơi</h3>
-                <button onclick="handlelogout()">
-                    <a href="/">Đăng xuất</a>
-                    
+                <button>
+                    Đăng xuất
                 </button>
             </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <!-- <th>Product id</th> -->
-                        <th>Tên trò chơi</th>
-                        <th>Giá vé</th>
-                        <th>Mô tả</th>
-                    </tr>
-                </thead>
-                <% products.forEach((entry)=> { %>
-                    <tr ondblclick="handleUpdateProduct('<%= entry._id %>')">
-                        
-                        <td>
-                            <%= entry.name %>
-                        </td>
-                        <td>
-                            <%= entry.type %>
-                        </td>
-                        <td>
-                            <%=entry.desc %>
-                        </td>
-                        <td>
-                            <input class="btn btn-primary" type="button" value="Update"
-                                onclick="handleUpdateProduct('<%= entry._id %>')">
-                        </td>
-                    </tr>
-                    <% }) %>
-            </table>
+            <form action="/api/user/employee/search_user" method="post">
+                <label for="username">Nhap username</label>
+
+                <input type="text" name="username">
+            </form>
+
+            <% if(client) { %>
+            <form action="/api/user/employee/updateClientTicket" method="post">
+                <div>userID <input type="text" name="clientID" value="<%= client._id %>" readonly="true"></div>
+                <div>username<input type="text" value="<%= client.username %>" readonly="true"></div>
+                <div>ticketexpired<input type="date" name="ticketexpired" value="<%= client.ticketexpired %>"></div>
+                <div>ticketactivated<input type="date" name="ticketactivated" value="<%= client.ticketactivated %>"></div>
+                <button type="submit">Confirm</button>
+            </form>
+            <% } %>
             <script>
                 function handleUpdateProduct(value) {
                     console.log(value);

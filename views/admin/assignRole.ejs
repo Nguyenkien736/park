@@ -27,6 +27,7 @@
                 <li><a href="/api/user/employee/GameInformation"><button>Thông tin trò chơi</button></a></li>
                 <li><a href="/api/user/employee/csvc"><button>Cơ sở vật chất</button></a></li>
                 <li><a href="/api/user/employee/GamePrice"><button>Quản lý trò chơi</button></a></li>
+                <li><a href="/api/user/admin"><button>Home</button></a></li>
             </ul>
         </div>
         <div id="main-content">
@@ -34,37 +35,36 @@
                 <h3>Thông tin trò chơi</h3>
                 <button onclick="handlelogout()">
                     <a href="/">Đăng xuất</a>
-                    
                 </button>
             </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <!-- <th>Product id</th> -->
-                        <th>Tên trò chơi</th>
-                        <th>Giá vé</th>
-                        <th>Mô tả</th>
-                    </tr>
-                </thead>
-                <% products.forEach((entry)=> { %>
-                    <tr ondblclick="handleUpdateProduct('<%= entry._id %>')">
-                        
-                        <td>
-                            <%= entry.name %>
-                        </td>
-                        <td>
-                            <%= entry.type %>
-                        </td>
-                        <td>
-                            <%=entry.desc %>
-                        </td>
-                        <td>
-                            <input class="btn btn-primary" type="button" value="Update"
-                                onclick="handleUpdateProduct('<%= entry._id %>')">
-                        </td>
-                    </tr>
-                    <% }) %>
-            </table>
+            <form action="/api/user/admin/assign_role" method="post">
+                <label for="username">Nhap username</label>
+
+                <input type="text" name="username">
+            </form>
+
+            <% if(client) { %>
+            <form action="/api/user/admin/updateUser" style="display: block;" method="post">
+                <div style="display: inline-flexbox;">userID &emsp; &nbsp;     :<input  type="text" name="clientID" value="<%= client._id %>" readonly="true"></div>
+                <div style="width: 50%;">username   :<input 400px;" type="text" value="<%= client.username %>" readonly="true"></div>
+                <div style="width: 50%;">
+                    Role
+                    <select name="role">
+                    
+                        <option <%= (role == "Client")? "selected='selected'" :"" %> value="Client">Client</option>
+                        <option <%= (role == "Employee")? "selected='selected'" :"" %> value="Employee">Employee</option>
+                        <option <%= (role == "Admin")? "selected='selected'" :"" %> value="Admin">Admin</option>
+                      </select>
+
+                     
+
+                </div>
+                
+                <button type="submit">Confirm</button>
+            </form>
+            <button><a href="/api/user/admin/deleteuser/<%= client._id%>">DELETE</a></button>
+            <% } %>
+            
             <script>
                 function handleUpdateProduct(value) {
                     console.log(value);

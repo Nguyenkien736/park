@@ -44,7 +44,7 @@ router.post("/login",async (req,res)=>{
 
         if(role.name=='Employee') res.redirect('../../api/user/employee/GamePrice')
         else if(role.name=='Client') res.redirect('/api/user/client/info/'+user._id)
-        else res.redirect()
+        else res.redirect("/api/user/admin")
     }
 
     }catch(err){
