@@ -27,8 +27,8 @@
         <div id="side-bar">
             <h3>Chức năng</h3>
             <ul>
-                <li><a href="/api/user/admin/assign_role"><button>assign role</button></a></li>
-                <li><a href="/api/user/employee/createrole"><button>create role</button></a></li>
+                <li><a href="/api/user/admin/assign_role"><button>Assign role</button></a></li>
+                <!--<li><a href="/api/user/employee/createrole"><button>create role</button></a></li>-->
                 <li><a href="/api/user/admin"><button>Home</button></a></li>
                 <li><a href="/api/user/employee/thongke"><button>Thống kê người chơi</button></a></li>
                 <li><a href="/api/user/employee/GameInformation"><button>Thông tin trò chơi</button></a></li>
@@ -36,16 +36,32 @@
                 <li><a href="/api/user/employee/GamePrice"><button>Quản lý trò chơi</button></a></li>
             </ul>
         </div>
+       
+        <% adminID = "61c08153a53c669773cfe9f7" %>
+        
+        
         <div id="main-content">
             <div class="main-content-top">
-                <h3>Quản lý trò chơi</h3>
-                <button><a href="/api/user/employee/add-product">Thêm trò chơi</a></button>
+                <h3>Admin</h3>
+                
                 <button onclick="handlelogout()">
                     <a href="/">Đăng xuất</a>
                 </button>
             </div>
             <table class="table table-hover">
+                <label class="lab">
+                    ID <input class="inp" type="text" name="dummy1" readonly="true" value="<%= adminID%>"/>
+                </label>
+                <hr>
+                    
+                  
                 
+                <button>
+                    <a href="/api/user/changepassword/<%= adminID %>">
+                        Change password
+                    </a>
+                </button>
+                <hr>
                 
             </table>
             <script>

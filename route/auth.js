@@ -7,7 +7,7 @@ const Role=require("./modules/Role")
 //Register
 router.post('/resgister',async (req,res)=>{
     console.log(req.body.role)
-    const roleRequest= await Role.findOne({name:req.body.role})
+    //const roleRequest= await Role.findOne({name:req.body.role})
    
 
     const user=await new User({
@@ -15,7 +15,7 @@ router.post('/resgister',async (req,res)=>{
         password:req.body.password,
         email:req.body.email,
 
-        role: roleRequest._id
+      //  role: roleRequest._id
     })
 
 

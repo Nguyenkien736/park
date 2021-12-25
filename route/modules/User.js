@@ -1,4 +1,5 @@
 const mongoose=require("mongoose")
+const ObjectId = require('mongodb').ObjectId;
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -15,7 +16,8 @@ const userSchema = new mongoose.Schema({
     role:{
         type:mongoose.Schema.Types.ObjectId,
         ref: 'roles',
-        required:true
+        required:true, 
+        default:new ObjectId("61b62ffdb48e7e66738ec8d3")
     },
     phonenumber:{
         type:String,
