@@ -25,6 +25,7 @@
         <div id="side-bar">
             <h3>Chức năng</h3>
             <ul id="functions">
+                
                 <li><a href="/api/user/employee/thongke"><button>Thống kê người chơi</button></a></li>
                 <li><a href="/api/user/employee/GameInformation"><button>Thông tin trò chơi</button></a></li>
                 <li><a href="/api/user/employee/csvc"><button>Cơ sở vật chất</button></a></li>
@@ -46,6 +47,17 @@
                 linkButton.appendChild(styleButton)
                 homeButton.appendChild(linkButton)
                 links.appendChild(homeButton)
+
+               
+                const assignRoleButton=document.createElement('li')
+                const assignLinkButton=document.createElement('a')
+                const styleRoleButton=document.createElement('button')
+                styleRoleButton.textContent="Assign Role"
+                assignLinkButton.href="/api/user/admin/assign_role"
+                assignLinkButton.appendChild(styleRoleButton)
+                assignRoleButton.appendChild(assignLinkButton)
+                links.appendChild(assignRoleButton)
+
             }
         </script>
         <div id="main-content">

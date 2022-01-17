@@ -16,19 +16,56 @@
     <div id="container">
         <div id="side-bar">
             <h3>Chức năng</h3>
-            <ul>
+            <ul id="functions">
+                
                 <li><a href="/api/user/employee/thongke"><button>Thống kê người chơi</button></a></li>
                 <li><a href="/api/user/employee/GameInformation"><button>Thông tin trò chơi</button></a></li>
                 <li><a href="/api/user/employee/csvc"><button>Cơ sở vật chất</button></a></li>
                 <li><a href="/api/user/employee/GamePrice"><button>Quản lý trò chơi</button></a></li>
+                <li><a href="/api/user/employee/search_user"><button>Tim kiem nguoi dung</button></a></li>
+                
             </ul>
         </div>
+        <script>
+            const role=localStorage.getItem("role")
+            console.log(role)
+            if(role=="Admin"){
+                const links=document.getElementById("functions")
+                const homeButton=document.createElement('li')
+                const linkButton=document.createElement('a')
+                const styleButton=document.createElement('button')
+                styleButton.textContent="Home"
+                linkButton.href="/api/user/admin/"
+                linkButton.appendChild(styleButton)
+                homeButton.appendChild(linkButton)
+                links.appendChild(homeButton)
+
+               
+                const assignRoleButton=document.createElement('li')
+                const assignLinkButton=document.createElement('a')
+                const styleRoleButton=document.createElement('button')
+                styleRoleButton.textContent="Assign Role"
+                assignLinkButton.href="/api/user/admin/assign_role"
+                assignLinkButton.appendChild(styleRoleButton)
+                assignRoleButton.appendChild(assignLinkButton)
+                links.appendChild(assignRoleButton)
+
+            }
+        </script>
         <div id="main-content">
             <div class="main-content-top">
                 <h3>Thông tin trò chơi</h3>
-                <button>
-                    Đăng xuất
+                <script>
+                    function handlelogout()
+                    {
+                        localStorage.setItem("role","")
+                    }
+                </script>
+                <button onclick="handlelogout()">
+                    <a href="/">Đăng xuất</a>
+                    
                 </button>
+
             </div>
             <form action="/api/user/employee/search_user" method="post">
                 <label for="username">Nhap username</label>
@@ -37,11 +74,15 @@
             </form>
 
             <% if(client) { %>
-            <form action="/api/user/employee/updateClientTicket" method="post">
-                <div>userID <input type="text" name="clientID" value="<%= client._id %>" readonly="true"></div>
-                <div>username<input type="text" value="<%= client.username %>" readonly="true"></div>
-                <div>ticketexpired<input type="date" name="ticketexpired" value="<%= client.ticketexpired %>"></div>
-                <div>ticketactivated<input type="date" name="ticketactivated" value="<%= client.ticketactivated %>"></div>
+            <form action="/api/user/employee/updateClientTicket" style="width: 60%;" method="post">
+                <div>userID <input type="text" name="clientID" value="<%= client._id %>" style="float: inline-end;" readonly="true"></div>
+                <hr></hr>
+                <div>username<input type="text" value="<%= client.username %>" readonly="true" style="float: inline-end;"></div>
+                <hr></hr>
+                <div>ticketexpired<input type="date" name="ticketexpired" value="<%= client.ticketexpired %>" style="float: inline-end;"></div>
+                <hr></hr>
+                <div>ticketactivated<input type="date" name="ticketactivated" value="<%= client.ticketactivated %>" style="float: inline-end;"></div>
+                <hr></hr>
                 <button type="submit">Confirm</button>
             </form>
             <% } %>

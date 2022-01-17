@@ -22,13 +22,42 @@
     <div id="container">
         <div id="side-bar">
             <h3>Chức năng</h3>
-            <ul>
+            <ul id="functions">
+                
                 <li><a href="/api/user/employee/thongke"><button>Thống kê người chơi</button></a></li>
                 <li><a href="/api/user/employee/GameInformation"><button>Thông tin trò chơi</button></a></li>
                 <li><a href="/api/user/employee/csvc"><button>Cơ sở vật chất</button></a></li>
                 <li><a href="/api/user/employee/GamePrice"><button>Quản lý trò chơi</button></a></li>
+                <li><a href="/api/user/employee/search_user"><button>Tim kiem nguoi dung</button></a></li>
+                
             </ul>
         </div>
+        <script>
+            const role=localStorage.getItem("role")
+            console.log(role)
+            if(role=="Admin"){
+                const links=document.getElementById("functions")
+                const homeButton=document.createElement('li')
+                const linkButton=document.createElement('a')
+                const styleButton=document.createElement('button')
+                styleButton.textContent="Home"
+                linkButton.href="/api/user/admin/"
+                linkButton.appendChild(styleButton)
+                homeButton.appendChild(linkButton)
+                links.appendChild(homeButton)
+
+               
+                const assignRoleButton=document.createElement('li')
+                const assignLinkButton=document.createElement('a')
+                const styleRoleButton=document.createElement('button')
+                styleRoleButton.textContent="Assign Role"
+                assignLinkButton.href="/api/user/admin/assign_role"
+                assignLinkButton.appendChild(styleRoleButton)
+                assignRoleButton.appendChild(assignLinkButton)
+                links.appendChild(assignRoleButton)
+
+            }
+        </script>
         <div id="main-content">
             <div class="main-content-top">
                 <h3>Thông tin trò chơi</h3>
